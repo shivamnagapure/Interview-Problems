@@ -1,0 +1,89 @@
+🔹 1. Race Condition
+
+Problem: Multiple threads update a shared resource at the same time, leading to inconsistent results.
+
+Example: Two threads increment a counter simultaneously.
+
+Solution: Synchronization (synchronized, Lock, AtomicInteger).
+
+Interview Question: “How do you prevent race conditions?”
+
+🔹 2. Deadlock
+
+Problem: Two or more threads wait on each other’s lock → none can proceed.
+
+Example: Thread A locks obj1 and waits for obj2, while Thread B locks obj2 and waits for obj1.
+
+Solution: Lock ordering, timeout, or tryLock().
+
+Interview Question: “What is deadlock and how do you avoid it?”
+
+🔹 3. Starvation
+
+Problem: A thread never gets CPU time/resources because higher-priority threads keep executing.
+
+Solution: Use fair locks (ReentrantLock(true)), thread scheduling.
+
+Interview Question: “What is starvation vs deadlock?”
+
+🔹 4. Livelock
+
+Problem: Threads keep changing state in response to each other but never make progress.
+
+Example: Two people trying to pass each other in a hallway and both keep moving aside endlessly.
+
+Solution: Add randomness, better coordination.
+
+Interview Question: “Explain livelock with an example.”
+
+🔹 5. Producer-Consumer Problem
+
+Classic interview coding problem.
+
+Multiple producers put data into a buffer, consumers take it out.
+
+Challenges: Synchronization, avoiding race condition, avoiding deadlock.
+
+Solution: wait() / notify(), BlockingQueue.
+
+Interview Question: “Implement producer-consumer in Java.”
+
+🔹 6. Reader-Writer Problem
+
+Problem: Multiple readers can read simultaneously, but only one writer should write (exclusive).
+
+Solution: Read-Write locks (ReentrantReadWriteLock).
+
+Interview Question: “When would you use ReadWriteLock?”
+
+🔹 7. Visibility Problem
+
+Problem: One thread updates a variable but others don’t see the change.
+
+Solution: volatile, synchronized.
+
+Interview Question: “What does volatile do?”
+
+🔹 8. Atomicity Problem
+
+Problem: Even simple operations like count++ are not atomic.
+
+Solution: Synchronization, AtomicInteger.
+
+Interview Question: “Why is i++ not thread-safe?”
+
+🔹 9. Thread Safety
+
+Problem: Shared mutable objects cause issues in concurrent access.
+
+Solution: Immutable objects, synchronization, thread-safe collections (ConcurrentHashMap).
+
+Interview Question: “What makes a class thread-safe?”
+
+🔹 10. ExecutorService & Thread Pools
+
+Problem: Managing thread creation/destruction manually is expensive.
+
+Solution: Use ExecutorService, Executors.newFixedThreadPool().
+
+Interview Question: “Difference between Executor, ExecutorService, and ForkJoinPool?”

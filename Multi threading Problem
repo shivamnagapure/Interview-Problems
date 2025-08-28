@@ -87,3 +87,112 @@ Problem: Managing thread creation/destruction manually is expensive.
 Solution: Use ExecutorService, Executors.newFixedThreadPool().
 
 Interview Question: “Difference between Executor, ExecutorService, and ForkJoinPool?”
+
+
+
+
+
+
+
+
+🔹 1. Bottleneck Problem
+
+Problem: When multiple threads depend on a single shared resource, the resource becomes a performance bottleneck.
+
+Example: Many threads try to write to a single synchronized method or DB connection.
+
+Solution: Reduce contention, use concurrent data structures, or increase resources (connection pool, partitioned locks).
+
+Interview Question: “What is a bottleneck in multithreading and how do you fix it?”
+
+🔹 2. Thread Interference
+
+Problem: Multiple threads modify shared data, and their operations overlap incorrectly.
+
+Example: Two threads executing i = i + 1 simultaneously.
+
+Solution: Synchronization, atomic classes (AtomicInteger).
+
+Interview Question: “Explain thread interference with example.”
+
+🔹 3. Priority Inversion
+
+Problem: A high-priority thread waits for a low-priority thread holding a lock, while medium-priority threads keep running.
+
+Solution: Priority inheritance, proper design to avoid blocking.
+
+Interview Question: “What is priority inversion?”
+
+🔹 4. False Sharing
+
+Problem: Threads on different cores update variables close in memory → cache line ping-pong → slow performance.
+
+Solution: Padding/aligning variables to different cache lines.
+
+Interview Question: “What is false sharing in multithreading?”
+
+🔹 5. Thread Leakage
+
+Problem: Threads are created but never terminated → resource leakage.
+
+Solution: Use thread pools instead of manually creating threads.
+
+Interview Question: “How do you prevent thread leakage?”
+
+🔹 6. Deadlock Detection & Recovery
+
+Problem: Beyond deadlock prevention, how to detect and recover if deadlock occurs.
+
+Solution: Timeout locks, deadlock detection algorithms, resource ordering.
+
+Interview Question: “How would you detect and recover from deadlock?”
+
+🔹 7. Thread Pool Starvation / Thread Starvation in Pools
+
+Problem: A fixed-size thread pool where all threads are blocked → new tasks cannot execute.
+
+Solution: Proper sizing of pool, avoid blocking tasks in pool threads.
+
+Interview Question: “What problems can happen in a fixed thread pool?”
+
+🔹 8. Concurrency Bugs in Collections
+
+Problem: Using non-thread-safe collections (like ArrayList, HashMap) in multiple threads.
+
+Solution: Use Collections.synchronizedList() or ConcurrentHashMap.
+
+Interview Question: “Difference between HashMap and ConcurrentHashMap in multithreading?”
+
+🔹 9. Blocking vs Non-blocking Synchronization
+
+Problem: Threads blocked waiting for locks can reduce throughput.
+
+Solution: Use non-blocking structures (Atomic classes, StampedLock).
+
+Interview Question: “Explain non-blocking concurrency.”
+
+🔹 10. Livelock vs Starvation vs Deadlock (Advanced)
+
+Problem: Subtle differences between these three, often confused.
+
+Solution: Understand causes:
+
+Deadlock → circular waiting.
+
+Starvation → low priority or unfair locks.
+
+Livelock → threads actively doing work but not progressing.
+
+Interview Question: “Explain livelock with example.”
+
+✅ Bonus: Real-life Coding Problems Often Asked
+
+Print Odd/Even Numbers Alternately using two threads.
+
+Dining Philosophers Problem (classic for deadlock/starvation).
+
+Read-Write Simulation (simulate multiple readers and single writer).
+
+Thread-safe Counter / Bank Transaction Simulation.
+
+Barrier / CountdownLatch problem (simulate threads waiting for others).
